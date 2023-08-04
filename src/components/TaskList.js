@@ -6,7 +6,7 @@ function TaskList() {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/tasks')
+    axios.get('https://task-manager-be-vgy3.onrender.com/tasks')
       .then(response => {
         setTasks(response.data);
       })
@@ -16,7 +16,7 @@ function TaskList() {
   }, []);
 
   function updateStatus(task) {
-    axios.put(`http://localhost:3000/tasks/${task._id}`, {
+    axios.put(`https://task-manager-be-vgy3.onrender.com/tasks/${task._id}`, {
       status: task.status === 'In Progress' ? 'Completed' : 'In Progress'
     })
       .then(response => {
@@ -28,7 +28,7 @@ function TaskList() {
   }
 
   function deleteTask(task) {
-    axios.delete(`http://localhost:3000/tasks/${task._id}`)
+    axios.delete(`https://task-manager-be-vgy3.onrender.com/tasks/${task._id}`)
       .then(() => {
         setTasks(tasks.filter(t => t._id !== task._id));
       })
